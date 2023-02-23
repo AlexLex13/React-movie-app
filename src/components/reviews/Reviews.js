@@ -30,7 +30,7 @@ const Reviews = ({getMovieData, movie, reviews, setReviews}) => {
             setReviews(updateReviews);
         }
         catch (err){
-            Console.error(err);
+            console.error(err);
         }
     }
 

@@ -10,15 +10,32 @@ import Trailer from "./components/trailer/Trailer";
 function App() {
 
     const [movies, setMovies] = useState();
+    const [movie, setMovie] = useState();
+    const [reviews, setReviews] = useState();
 
     const getMovies = async () => {
 
         try {
-            const response = await api.get("/api/v1/movies")
-            setMovies(response.data)
+            const response = await api.get("/api/v1/movies");
+            setMovies(response.data);
         }
         catch (err){
-            console.log(err)
+            console.log(err);
+        }
+    }
+
+    const getMovieData = async (movieId) => {
+        try{
+            const response = await api.get(`/api/v1/movies/${movieId}`);
+
+            const singleMovie = response.data;
+
+            setMovie(singleMovie);
+
+            setReviews(singleMovie.reviews);
+        }
+        catch (error){
+            console.error(error);
         }
     }
 
