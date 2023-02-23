@@ -6,10 +6,13 @@ function App() {
 
     const [movies, setMovies] = useState();
 
-    const getMovies = async () =>{
+    const getMovies = async () => {
 
         try {
             const response = await api.get("/api/v1/movies")
+
+            console.log(response.data)
+
             setMovies(response.data)
         }
         catch (err){
@@ -17,11 +20,15 @@ function App() {
         }
     }
 
-  return (
-    <div className="App">
+    useEffect(() => {
+        getMovies();
+    }, [])
 
-    </div>
-  );
+    return (
+        <div className="App">
+
+        </div>
+    );
 }
 
 export default App;
